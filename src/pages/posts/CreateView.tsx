@@ -33,7 +33,8 @@ export function CreateView() {
       return;
     }
     try {
-      //if (confirm('게시물을 등록하시겠습니까?') === false) return;
+      // eslint-disable-next-line no-alert
+      if (window.confirm('게시물을 등록하시겠습니까?') === false) return;
       await createPost(newData);
       navigate('/posts');
     } catch (error) {

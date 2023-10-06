@@ -27,6 +27,15 @@ export function ListView() {
       //console.log(error);
     }
   };
+  const 검색_제목으로 = ($keyword: string) => {
+    setSearch($keyword);
+  };
+  const 보여주기_몇개씩 = ($limit: number) => {
+    setLimit($limit);
+  };
+  const 정렬 = ($order: string) => {
+    setOrder($order);
+  };
 
   useEffect(() => {
     fetchPosts();
@@ -38,22 +47,11 @@ export function ListView() {
       <Link to="/">홈으로 돌아가기</Link>
       <Link to="/posts/write">글쓰기</Link>
       <div>
-        <PostFilter limit={setLimit} />
-        {/* <Input
-          type="text"
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)}
+        <PostFilter
+          searchKeyword={검색_제목으로}
+          setLimitPost={보여주기_몇개씩}
+          setOrderPost={정렬}
         />
-        <select
-          onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setLimit(Number(e.target.value))}
-        >
-          <option value="3">3개씩 보기</option>
-          <option value="6">6개씩 보기</option>
-          <option value="9">9개씩 보기</option>
-        </select>
-        <select onChange={(e) => setOrder(e.target.value)}>
-          <option value="desc">desc</option>
-          <option value="asc">asc</option>
-        </select> */}
         <div style={{ margin: '10px 0' }}>
           <Divider />
         </div>
