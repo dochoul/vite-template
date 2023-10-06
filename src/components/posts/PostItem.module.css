@@ -1,8 +1,30 @@
 .box {
   border: 1px solid #ccc;
-  padding: 10px;
+  padding: 20px;
   background: #fff;
 }
 .box:hover {
   border-color: #000;
+}
+.link {
+  text-decoration: none;
+  color: #333;
+}
+.title {
+  font-size: 18px;
+  margin-bottom: 10px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.content {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+.day {
+  font-size: 14px;
+  margin-top: 10px;
+  color: #aaa;
 }

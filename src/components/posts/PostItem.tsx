@@ -4,13 +4,11 @@ import { PostProps } from '../../types/defines';
 
 export function PostItem({ id, title, content, createdAt }: PostProps) {
   return (
-    <Link to={`./${id}`} key={id}>
+    <Link className={classes.link} to={`./${id}`} key={id}>
       <div className={classes.box}>
-        <div className={classes.body}>
-          <h5 className={classes.title}>{title}</h5>
-          <p className="card-text">{content}</p>
-          <p>{createdAt}</p>
-        </div>
+        <h5 className={classes.title}>{title}</h5>
+        <p className={classes.content}>{content}</p>
+        <p className={classes.day}>{createdAt}</p>
       </div>
     </Link>
   );
