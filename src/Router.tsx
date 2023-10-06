@@ -3,6 +3,7 @@ import { HomePage } from './pages/Home.page';
 import { ListView } from './pages/posts/ListView';
 import { DetailView } from './pages/posts/DetailView';
 import { CreateView } from './pages/posts/CreateView';
+import { EditView } from './pages/posts/EditView';
 
 const router = createBrowserRouter([
   {
@@ -10,7 +11,7 @@ const router = createBrowserRouter([
     element: <HomePage />,
   },
   {
-    path: '/write',
+    path: '/posts/write',
     element: <CreateView />,
   },
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: '/posts/:id',
     element: <DetailView />,
+  },
+  {
+    path: '/posts/edit/:id',
+    element: <EditView />,
   },
 ]);
 

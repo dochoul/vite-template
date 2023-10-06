@@ -1,14 +1,8 @@
-.title {
-}
-
 .box {
   border: 1px solid #ccc;
   padding: 10px;
+  background: #fff;
 }
 .box:hover {
   border-color: #000;
-}
-
-.body {
-  flex: 1 1 0;
 }

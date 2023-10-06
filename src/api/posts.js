@@ -23,3 +23,8 @@ export async function createPost(data) {
   const response = await instance.post('', data);
   return response;
 }
+
+export async function editPost(id) {
+  const response = await instance.put(`${id}`);
+  return response;
+}
