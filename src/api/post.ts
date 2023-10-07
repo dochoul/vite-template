@@ -8,15 +8,17 @@ export async function getPosts({
   _limit,
   _sort,
   _order,
+  _page,
   title_like,
 }: {
   _limit: number;
   _sort: string;
   _order: string;
+  _page: number;
   title_like: string;
 }) {
   const response = await instance.get(
-    `?_sort=${_sort}&_order=${_order}&_limit=${_limit}&title_like=${title_like}`
+    `?_sort=${_sort}&_order=${_order}&_limit=${_limit}&title_like=${title_like}&_page=${_page}`
   );
   return response;
 }
