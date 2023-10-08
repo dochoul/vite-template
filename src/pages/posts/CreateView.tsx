@@ -14,7 +14,7 @@ export function CreateView() {
   const newData = {
     title,
     content,
-    createdAt: dayjs(new Date()).format('YYYY:MM:DD hh:mm:ss'),
+    createdAt: dayjs(new Date()).format('YYYY:MM:DD HH:mm:ss'),
   };
 
   const isActiveSaveButton = () => {
@@ -59,13 +59,13 @@ export function CreateView() {
           placeholder="Input placeholder"
           onChange={(e) => setContent(e.target.value)}
         />
-        <Flex gap="md" justify="flex-end">
-          <Link to="/posts">목록</Link>
-          <Button disabled={isActiveSaveButton()} variant="filled" size="xl" onClick={() => save()}>
-            저장
-          </Button>
-        </Flex>
       </SimpleGrid>
+      <Flex gap="md" justify="flex-end">
+        <Link to="/posts">목록</Link>
+        <Button disabled={isActiveSaveButton()} variant="filled" size="xl" onClick={() => save()}>
+          저장
+        </Button>
+      </Flex>
       <div />
     </div>
   );
