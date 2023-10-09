@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Loader, SimpleGrid, Divider, Pagination, Space, Flex } from '@mantine/core';
+import { useLocalStorage } from '@mantine/hooks';
 import { PostProps } from '../../types/defines';
 //import { getPosts } from '../../api/post';
 import { PostItem } from '../../components/posts/PostItem';
@@ -8,7 +9,10 @@ import { usePostStore } from '../../store/post';
 
 export function ListView() {
   const [search, setSearch] = useState<string>(''); //* 제목으로 검색
-  const [limit, setLimit] = useState<number>(3); //* 몇개씩 보여줄거니?
+
+  //const [limit, setLimit] = useState<number>(3); //* 몇개씩 보여줄거니?
+  const [limit = 3, setLimit] = useLocalStorage({ key: 'LIMIT-POST', defaultValue: 3 });
+
   const [order, setOrder] = useState<string>('desc'); //* 내림차순(default)으로 정렬
   const [page, setPage] = useState<number>(1); //* 현재 페이지 번호
 
@@ -19,7 +23,7 @@ export function ListView() {
 
   const params = {
     _sort: 'createdAt',
-    _limit: limit,
+    _limit: Number(limit),
     _order: order,
     _page: page,
     title_like: search,
