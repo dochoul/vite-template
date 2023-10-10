@@ -1,17 +1,13 @@
 import { useEffect, useState } from 'react';
-import { Loader, SimpleGrid, Divider, Pagination, Space, Flex } from '@mantine/core';
+import { Loader, SimpleGrid, Pagination, Flex } from '@mantine/core';
 import { useLocalStorage } from '@mantine/hooks';
-import { Link, useNavigate } from 'react-router-dom';
 import { PostProps } from '../../types/defines';
 //import { getPosts } from '../../api/post';
 import { PostItem } from '../../components/posts/PostItem';
 import { PostFilter } from '../../components/posts/PostFilter';
 import { usePostStore } from '../../store/post';
-import { login } from '../../api/post';
-import { saveAuthToCookie, saveUserToCookie } from '../../utils/cookies';
 
 export function ListView() {
-  const navigate = useNavigate();
   const [search, setSearch] = useState<string>(''); //* 제목으로 검색
 
   //const [limit, setLimit] = useState<number>(3); //* 몇개씩 보여줄거니?
@@ -24,7 +20,6 @@ export function ListView() {
   const totalCount = usePostStore((state) => state.totalCount);
   const getPosts = usePostStore((state) => state.getPosts);
   const isLoading = usePostStore((state) => state.isLoading);
-  const getToken = usePostStore((state) => state.getToken);
 
   const params = {
     _sort: 'createdAt',
@@ -48,19 +43,6 @@ export function ListView() {
   };
   const 페이징처리 = ($page: number) => {
     setPage($page);
-  };
-  const setLogin = async () => {
-    const { data } = await login({
-      email: 'eve.holt@reqres.in',
-      password: 'cityslicka',
-    });
-    getToken(data.token);
-    alert('로그인 되었습니다.');
-    saveAuthToCookie(data.token);
-    saveUserToCookie(data.token);
-    console.log(data);
-
-    navigate('/');
   };
 
   useEffect(() => {
@@ -90,10 +72,6 @@ export function ListView() {
       <Flex justify={{ sm: 'center' }}>
         <Pagination value={page} total={Math.ceil(totalCount / limit)} onChange={페이징처리} />
       </Flex>
-
-      <button type="button" onClick={setLogin}>
-        로그인
-      </button>
 
       {/* <div>{JSON.stringify(params)}</div> */}
     </div>

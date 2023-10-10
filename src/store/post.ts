@@ -25,6 +25,7 @@ type PostProps = {
   getPosts: (params: Props) => void;
   getPost: (id: number) => void;
   getToken: (token: string) => void;
+  deleteToken: () => void;
 };
 
 export const usePostStore = create<PostProps>((set) => ({
@@ -63,5 +64,8 @@ export const usePostStore = create<PostProps>((set) => ({
   },
   getToken: ($token: string) => {
     set({ token: $token });
+  },
+  deleteToken: () => {
+    set({ token: '' });
   },
 }));
