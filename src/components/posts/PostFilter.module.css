@@ -1,0 +1,14 @@
+.Postfilter {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+.Postfilter input,
+.Postfilter select {
+  border: 1px solid #ccc;
+  font-size: 16px;
+  padding: 6px;
+}
+select {
+  margin-left: 10px;
+}

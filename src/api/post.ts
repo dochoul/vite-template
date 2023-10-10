@@ -1,8 +1,15 @@
 import axios from 'axios';
+import { SetInterceptors } from './common/interceptors';
 
-const instance = axios.create({
-  baseURL: 'http://localhost:8001/posts/',
-});
+function createInstance() {
+  const instance = axios.create({
+    baseURL: 'http://localhost:8001/posts/',
+  });
+
+  return SetInterceptors(instance);
+}
+
+const instance = createInstance();
 
 type FetchProps = {
   _sort: string;
@@ -26,6 +33,11 @@ export async function fetchPostById(id: number) {
 
 export async function deletePost(id: number) {
   const response = await instance.delete(`${id}`);
+  return response;
+}
+
+export async function login(data) {
+  const response = await axios.post('https://reqres.in/api/login', data);
   return response;
 }
 

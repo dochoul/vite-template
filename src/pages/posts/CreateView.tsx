@@ -55,7 +55,9 @@ export function CreateView() {
         <Textarea
           ref={contentRef}
           size="md"
-          radius="xs"
+          autosize
+          multiline
+          minRows={10}
           placeholder="Input placeholder"
           onChange={(e) => setContent(e.target.value)}
         />

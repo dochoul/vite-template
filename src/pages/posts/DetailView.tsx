@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 //import { getPostById } from '../../api/post';
-import { PostProps } from '../../types/defines';
+//import { PostProps } from '../../types/defines';
 import { PostDetail } from '../../components/posts/PostDetail';
 import { usePostStore } from '../../store/post';
 
-interface Props extends PostProps {
-  editedAt: string;
-}
+// interface Props extends PostProps {
+//   editedAt: string;
+// }
 
 export function DetailView() {
   //const [post, setPost] = useState<Props>(Object);
@@ -21,12 +21,11 @@ export function DetailView() {
   // };
 
   useEffect(() => {
-    가져오기_포스트(id);
+    가져오기_포스트(Number(id));
   }, []);
 
   return (
     <div className="container">
-      <h1>상세보기</h1>
       <PostDetail {...post} />
     </div>
   );

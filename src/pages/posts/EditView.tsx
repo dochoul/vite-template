@@ -60,7 +60,13 @@ export function EditView() {
       <hr />
       <SimpleGrid cols={1}>
         <Input defaultValue={post.title} onChange={(e) => setTitle(e.target.value)} />
-        <Textarea defaultValue={post.content} onChange={(e) => setContent(e.target.value)} />
+        <Textarea
+          size="md"
+          autosize
+          minRows={10}
+          defaultValue={post.content}
+          onChange={(e) => setContent(e.target.value)}
+        />
       </SimpleGrid>
       <Flex gap="md" justify="flex-end">
         <Link to="/posts">목록</Link>
