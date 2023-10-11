@@ -10,12 +10,10 @@ import { DetailView } from './pages/posts/DetailView';
 import { CreateView } from './pages/posts/CreateView';
 import { EditView } from './pages/posts/EditView';
 import { HomePage } from './pages/Home.page';
-
-import { usePostStore } from './store/post';
+import { ProtectedRoute } from './ProtectedRoute';
+import { LoginView } from './pages/LoginView';
 
 export default function App() {
-  const token = usePostStore((state) => state.token);
-
   return (
     // <MantineProvider theme={theme}>
     //   <Header />
@@ -27,10 +25,13 @@ export default function App() {
           <Header />
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/posts" element={<ListView />} />
-            <Route path="/posts/:id" element={<DetailView />} />
-            <Route path="/posts/write" element={<CreateView />} />
-            <Route path="//posts/edit/:id" element={<EditView />} />
+            <Route path="/login" element={<LoginView />} />
+            <Route element={<ProtectedRoute />}>
+              <Route path="/posts" element={<ListView />} />
+              <Route path="/posts/:id" element={<DetailView />} />
+              <Route path="/posts/write" element={<CreateView />} />
+              <Route path="//posts/edit/:id" element={<EditView />} />
+            </Route>
           </Routes>
         </div>
       </BrowserRouter>

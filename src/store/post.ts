@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 //import axios from 'axios';
 import { fetchPosts, fetchPostById } from '../api/post';
-import { getAuthFromCookie, getUserFromCookie } from '../utils/cookies';
+import { getAuthFromCookie, deleteCookie } from '../utils/cookies';
 
 type Props = {
   _limit: number;
@@ -25,6 +25,7 @@ type PostProps = {
   getPosts: (params: Props) => void;
   getPost: (id: number) => void;
   getToken: (token: string) => void;
+  clearToken: () => void;
 };
 
 export const usePostStore = create<PostProps>((set) => ({
@@ -63,5 +64,8 @@ export const usePostStore = create<PostProps>((set) => ({
   },
   getToken: ($token: string) => {
     set({ token: $token });
+  },
+  clearToken: () => {
+    set({ token: '' });
   },
 }));
