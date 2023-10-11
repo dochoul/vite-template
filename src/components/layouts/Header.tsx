@@ -1,9 +1,10 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './Header.module.css';
 import { usePostStore } from '../../store/post';
 import { deleteCookie } from '../../utils/cookies';
 
 export const Header = () => {
+  const navigate = useNavigate();
   const token = usePostStore((state) => state.token);
   const clearToken = usePostStore((state) => state.clearToken);
 
