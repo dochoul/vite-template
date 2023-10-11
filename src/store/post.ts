@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 //import axios from 'axios';
 import { fetchPosts, fetchPostById } from '../api/post';
-import { getAuthFromCookie, deleteCookie } from '../utils/cookies';
+import { getAuthFromCookie } from '../utils/cookies';
 
 type Props = {
   _limit: number;
@@ -49,8 +49,8 @@ export const usePostStore = create<PostProps>((set) => ({
         posts: response.data,
         totalCount: response.headers['x-total-count'],
       });
-    } catch (err: any) {
-      set({ err: err.message, isLoading: false });
+    } catch (err) {
+      set({ isLoading: false });
     }
   },
   getPost: async (id) => {
@@ -58,8 +58,8 @@ export const usePostStore = create<PostProps>((set) => ({
       set({ isLoading: true });
       const response = await fetchPostById(id);
       set({ isLoading: false, post: response.data });
-    } catch (err: any) {
-      set({ err: err.message, isLoading: false });
+    } catch (err) {
+      set({ isLoading: false });
     }
   },
   getToken: ($token: string) => {
